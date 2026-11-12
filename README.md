@@ -1,10 +1,28 @@
-First, make sure the system is allowed to run scripts
-Get-ExecutionPolicy -List
+# PowerShell Scripts
 
-Install the policy
-Set-ExecutionPolicy RemoteSigned
+A collection of practical PowerShell scripts for Windows Server administration, troubleshooting, security auditing, and infrastructure automation.
 
-# powershell-scripts
-DisbableEthernet - this script enable or disable network interfae with name "Ethernet"  as administrator, but script can be run user.
+Each script solves a specific real-world IT administration task.
 
-GetServiceStatus - This script send to email status Windows services, specified in the array $services
+## Scripts
+
+### Windows Security
+
+| Script | Description |
+|---|---|
+| [Get-FailedLogonAttempts](Windows/Security/Get-FailedLogonAttempts/) | Analyze failed Windows logon attempts (Event ID 4625), including source IP addresses, usernames, and authentication failure reasons. |
+
+
+## Requirements
+
+- Windows PowerShell 5.1 or PowerShell 7, depending on the script
+- Appropriate permissions for the target operation
+- See individual script documentation for specific requirements
+
+## Usage
+
+Each script has its own README with usage examples, requirements, and limitations.
+
+## Disclaimer
+
+Scripts are provided as-is. Review and test them before using them in production environments.

@@ -1,98 +1,38 @@
-# PowerShell Scripts
+owerShell Scripts
+A collection of practical PowerShell utilities for Windows Server administration, security auditing, troubleshooting, and infrastructure automation.
 
-A collection of practical PowerShell scripts for Windows Server administration, troubleshooting, security auditing, and infrastructure automation.
-
-Each script solves a specific real-world IT administration task.
-
-
-## Scripts
-
-### Windows Security
-
-| Script | Description |
-|---|---|
-| [Get-FailedLogonAttempts](Windows/Security/Get-FailedLogonAttempts/) | Analyze failed Windows logon attempts (Event ID 4625), including source IP addresses, usernames, and authentication failure reasons. |
+Each script focuses on a specific real-world administration task and includes its own README with usage examples, requirements, and limitations.
+Scripts
+Windows Security
+Script	Description
+[Get-FailedLogonAttempts](Windows/Security/Get-FailedLogonAttempts/)	Investigate failed Windows logon attempts (Security Event ID 4625), including usernames, source IPs, logon types, and failure reasons.
+[Get-SuccessfulLogons](Windows/Security/Get-SuccessfulLogons/)	Audit successful Windows logons (Security Event ID 4624); filter console, RDP, network, and other logon types by name or ID.
 
 
-## Requirements
+Requirements
+- Windows and an appropriate version of PowerShell (see each script's README).
+- Permission to perform the requested operation or read the relevant Windows event log.
+- Review scripts and their parameters before running them, particularly on production servers.
+PowerShell Execution Policy
+Windows may block PowerShell scripts downloaded from GitHub because they are not digitally signed.
 
-- Windows PowerShell 5.1 or PowerShell 7, depending on the script
-- Appropriate permissions for the target operation
-- See individual script documentation for specific requirements
-
-## PowerShell Execution Policy
-
-Windows may block PowerShell scripts downloaded from GitHub or other internet sources if they are not digitally signed.
-
-### 1. Check the current execution policy
-
-Open PowerShell and run:
-
-```powershell
+1. Check the effective execution policy:
 Get-ExecutionPolicy -List
-```
-
-### 2. Enable local script execution
-
-If script execution is restricted, you can enable the `RemoteSigned` policy for your current user:
-
-```powershell
+2. If scripts are restricted and your environment permits it, use RemoteSigned for your user account:
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-```
+RemoteSigned allows locally created unsigned scripts but generally requires downloaded scripts to be signed or explicitly unblocked. Do not change organization-managed policies without authorization.
 
-`RemoteSigned` allows locally created unsigned scripts to run while requiring downloaded scripts to be signed or explicitly unblocked.
+3. Review the downloaded script and unblock that specific file if necessary:
+Unblock-File -Path ".\Get-SuccessfulLogons.ps1"
+You can check whether it has an internet download marker before unblocking:
+Get-Item ".\Get-SuccessfulLogons.ps1" -Stream Zone.Identifier -ErrorAction SilentlyContinue
+4. Run the script from its own folder:
+.\Get-SuccessfulLogons.ps1 -LogonType RDP -Hours 24
+Scripts launched from network shares (UNC paths) can also be affected by Windows security zones. If appropriate, copy the script locally, review it, and unblock only that file.
+Security note: Unblock-File does not verify a file's safety. Avoid disabling execution-policy checks globally with Bypass or Unrestricted. Group Policy may override user and machine settings, and execution policy is not a security boundary.
 
-Administrator privileges are not required when changing the `CurrentUser` scope.
-
-### 3. Unblock downloaded scripts
-
-If you see the following error:
-
-```text
-File cannot be loaded because it is not digitally signed.
-```
-
-You can unblock the downloaded script:
-
-```powershell
-Unblock-File -Path ".\Get-FailedLogonAttempts.ps1"
-```
-
-Then run it:
-
-```powershell
-.\Get-FailedLogonAttempts.ps1
-```
-
-To check whether a file is marked as downloaded from the internet:
-
-```powershell
-Get-Item ".\Get-FailedLogonAttempts.ps1" -Stream Zone.Identifier -ErrorAction SilentlyContinue
-```
-
-### 4. Scripts on network shares
-
-Scripts executed directly from network shares (UNC paths) may also be restricted by Windows security zone settings.
-
-If necessary, copy the script to a local directory, review its contents, and unblock it before running.
-
-### Security Notes
-
-- Always review scripts before executing them, especially with administrator privileges.
-- Do not use `Bypass` or `Unrestricted` as a general solution to execution-policy errors.
-- `Unblock-File` removes the downloaded-file security marker; it does not verify that a script is safe.
-- Organizational Group Policy settings may override local execution policies.
-
-For more information, see the official Microsoft documentation:
-
-- [PowerShell Execution Policies](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies)
-- [Unblock-File](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/unblock-file)
-
-
-## Usage
-
-Each script has its own README with usage examples, requirements, and limitations.
-
-## Disclaimer
-
-Scripts are provided as-is. Review and test them before using them in production environments.
+Official references: PowerShell execution policies · Unblock-File.
+Contributing
+Bug reports and suggested improvements are welcome through GitHub Issues. Please do not include real credentials, customer data, or sensitive event log exports.
+Disclaimer
+Scripts are provided as-is. Test them in a suitable environment before production use.

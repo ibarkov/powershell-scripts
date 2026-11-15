@@ -13,6 +13,7 @@ Each script focuses on a specific real-world administration task and includes it
 | [Get-FailedLogonAttempts](Windows/Security/Get-FailedLogonAttempts/) | Investigate failed Windows logon attempts (Security Event ID **4625**), including usernames, source IPs, logon types, and failure reasons. |
 | [Get-SuccessfulLogons](Windows/Security/Get-SuccessfulLogons/) | Audit successful Windows logons (Security Event ID **4624**); filter console, RDP, network, and other logon types by name or ID. |
 | [Get-RdpSessionHistory](Windows/Security/Get-RdpSessionHistory/) | View Windows RDP session history, including logons, reconnects, disconnects, and logoffs. Supports filtering by user, time range, and event type, with CSV export. |
+| [Get-AccountLockoutEvents](Windows/Security/Get-AccountLockoutEvents/) | Audit Windows account lockouts (Security Event ID **4740**), identify locked accounts and caller computers, filter by username and time range, and export results to CSV. |
 
 ## Requirements
 

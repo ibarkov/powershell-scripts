@@ -52,6 +52,11 @@
     Reconnects and disconnects to an existing session are NOT logged here —
     use Get-RdpSessionHistory.ps1 (LocalSessionManager events 21/23/24/25) for that.
     For additional RDP reconnect/disconnect evidence, see Security events 4778 and 4779.
+
+    Author:    Igor Barkov
+    Copyright: (c) 2026 Igor Barkov
+    License:   MIT
+    GitHub:    https://github.com/ibarkov/powershell-scripts
 #>
 [CmdletBinding()]
 param(

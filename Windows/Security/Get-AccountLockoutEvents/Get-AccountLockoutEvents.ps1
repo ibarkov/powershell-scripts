@@ -1,4 +1,3 @@
-
 <#
 .SYNOPSIS
     Lists Windows account lockout events (Security Event ID 4740).
@@ -69,6 +68,11 @@
 .NOTES
     Developed for Windows PowerShell 5.1. Requires permission to read the local
     Security log and Audit User Account Management (Success) for Event ID 4740.
+
+    Author:    Igor Barkov
+    Copyright: (c) 2026 Igor Barkov
+    License:   MIT
+    GitHub:    https://github.com/ibarkov/powershell-scripts
 #>
 
 [CmdletBinding()]

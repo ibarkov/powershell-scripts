@@ -36,6 +36,11 @@
     Event IDs: 21 Logon, 23 Logoff, 24 Disconnect, 25 Reconnect.
     Logs may have been rotated or cleared; events are not a complete historical
     record of all network connections.
+
+    Author:    Igor Barkov
+    Copyright: (c) 2026 Igor Barkov
+    License:   MIT
+    GitHub:    https://github.com/ibarkov/powershell-scripts
 #>
 [CmdletBinding()]
 param(

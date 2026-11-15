@@ -33,6 +33,11 @@
 .NOTES
     Logon Type 3 means network logon; it does not by itself prove an RDP attempt.
     IP address and workstation may be absent in some events.
+
+    Author:    Igor Barkov
+    Copyright: (c) 2026 Igor Barkov
+    License:   MIT
+    GitHub:    https://github.com/ibarkov/powershell-scripts
 #>
 [CmdletBinding()]
 param(

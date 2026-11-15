@@ -1,6 +1,13 @@
+
 # PowerShell Scripts
 
-A collection of practical PowerShell utilities for Windows Server administration, security auditing, troubleshooting, and infrastructure automation.
+[![License](https://img.shields.io/github/license/ibarkov/powershell-scripts)](LICENSE)
+![Windows](https://img.shields.io/badge/Platform-Windows-0078D4)
+![PowerShell](https://img.shields.io/badge/PowerShell-5.1-5391FE?logo=powershell&logoColor=white)
+[![Last Commit](https://img.shields.io/github/last-commit/ibarkov/powershell-scripts)](https://github.com/ibarkov/powershell-scripts/commits)
+[![Security Policy](https://img.shields.io/badge/Security-Policy-blue)](SECURITY.md)
+
+A collection of practical PowerShell utilities for **Windows Server administration, security auditing, troubleshooting, and infrastructure automation**.
 
 Each script focuses on a specific real-world administration task and includes its own README with usage examples, requirements, and limitations.
 
@@ -47,6 +54,16 @@ Review scripts before executing them. Organizational Group Policy settings may o
 
 Each utility has its own README with instructions and examples. Open the script's folder to get started.
 
+## Security
+
+Found a security vulnerability?
+
+Please read the [Security Policy](SECURITY.md) and report it privately.
+
+Do not include credentials, sensitive account data, or production audit logs in public GitHub issues.
+
 ## License
 
-See the repository's LICENSE file, if present.
+This project is licensed under the [MIT License](LICENSE).
+
+Copyright (c) 2026 Igor Barkov.

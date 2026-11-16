@@ -21,12 +21,14 @@ Each script focuses on a specific real-world administration task and includes it
 | [Get-SuccessfulLogons](Windows/Security/Get-SuccessfulLogons/) | Audit successful Windows logons (Security Event ID **4624**); filter console, RDP, network, and other logon types by name or ID. |
 | [Get-RdpSessionHistory](Windows/Security/Get-RdpSessionHistory/) | View Windows RDP session history, including logons, reconnects, disconnects, and logoffs. Supports filtering by user, time range, and event type, with CSV export. |
 | [Get-AccountLockoutEvents](Windows/Security/Get-AccountLockoutEvents/) | Audit Windows account lockouts (Security Event ID **4740**), identify locked accounts and caller computers, filter by username and time range, and export results to CSV. |
+| [Get-AccountAndGroupChanges](Windows/Security/Get-AccountAndGroupChanges/) | Audit Windows account and security group changes (Event IDs **4720–4738, 4756, 4757**), including user creation, account modifications, and membership changes in Administrators and other security groups. |
 
 ## Requirements
 
 - Windows with a compatible version of PowerShell (see each script's README).
 - Appropriate permissions to access the relevant Windows Event Logs.
 - Administrator privileges may be required for reading Security event logs.
+- Required Windows auditing policies enabled for the events you want to investigate.
 
 ## PowerShell Execution Policy
 
@@ -52,7 +54,11 @@ Review scripts before executing them. Organizational Group Policy settings may o
 
 ## Usage
 
-Each utility has its own README with instructions and examples. Open the script's folder to get started.
+Each utility has its own README with instructions, examples, supported parameters, and limitations.
+
+Open the script's folder to get started.
+
+The scripts can be executed independently; installing the entire collection is not required.
 
 ## Security
 
